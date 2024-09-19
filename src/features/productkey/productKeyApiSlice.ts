@@ -1,23 +1,22 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Cookies from 'js-cookie';
 
-interface Hotel {
-    Name: string;
-    Email: string;
-    Location: string;
-    DateCreated: Date;
+interface ProductKey {
+    HotelId: string;
+    ActiveDays: number;
 }
 
-interface HotelApiResponse {
-    hotels: Hotel[];
+interface ProductKeyApiResponse {
+    key: string,
+    expirationDate: Date
 }
 
 const getToken = () => Cookies.get("JWT");
 
-export const hotelApiSlice = createApi({
+export const productKeyApiSlice = createApi({
     reducerPath: "hotelApi",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://localhost:7160/Hotels",
+        baseUrl: "https://localhost:7160/ProductKeys",
         credentials: 'include',
         prepareHeaders: (headers) => {
             const token = getToken();
@@ -27,47 +26,45 @@ export const hotelApiSlice = createApi({
             return headers;
         },
     }),
-    tagTypes: ["Hotel"],
+    tagTypes: ["ProductKey"],
     endpoints: (builder) => ({
-        getHotels: builder.query<HotelApiResponse, {}>({
+        getHotels: builder.query<ProductKeyApiResponse, {}>({
             query: () => ({
                 url: "/get",
                 method: "GET"
             }),
         }),
-        getHotelById: builder.query<Hotel, number>({
-            query: (id) => `/${id}`,
-            providesTags: (result, error, id) => [{ type: "Hotel", id }],
+        getHotelById: builder.query<ProductKey, number>({
+            query: (id) => `/${id}`
         }),
-        createHotel: builder.mutation<Hotel, Partial<Hotel>>({
-            query: (newHotel) => ({
+        createHotel: builder.mutation<ProductKey, Partial<ProductKey>>({
+            query: (newKey) => ({
                 url: "/create",
                 method: "POST",
-                body: newHotel,
+                body: newKey,
             }),
         }),
-        updateHotel: builder.mutation<Hotel, { id: number; hotel: Partial<Hotel> }>({
+        updateHotel: builder.mutation<ProductKey, { id: number; hotel: Partial<ProductKey> }>({
             query: ({ id, hotel }) => ({
                 url: `/${id}`,
                 method: "PUT",
                 body: hotel,
             }),
-            invalidatesTags: (result, error, { id }) => [{ type: "Hotel", id }],
+            invalidatesTags: (result, error, { id }) => [{ type: "ProductKey", id }],
         }),
         deleteHotel: builder.mutation<{ success: boolean; id: number }, number>({
             query: (id) => ({
                 url: `/${id}`,
                 method: "DELETE",
-            }),
-            invalidatesTags: (result, error, id) => [{ type: "Hotel", id }],
+            })
         }),
     }),
 });
 
 export const {
-    useGetHotelsQuery,
-    useGetHotelByIdQuery,
-    useCreateHotelMutation,
-    useUpdateHotelMutation,
-    useDeleteHotelMutation,
-} = hotelApiSlice;
+    useGetProductKeysQuery,
+    useGetProductKeyByIdQuery,
+    useCreateProductKeyMutation,
+    useUpdateProductKeyMutation,
+    useDeleteProductKeyMutation,
+} = productKeyApiSlice;

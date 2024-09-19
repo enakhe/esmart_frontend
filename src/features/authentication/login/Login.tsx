@@ -23,7 +23,7 @@ export const Login = () => {
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         validate()
         try {
             await login({ username, password }).unwrap()

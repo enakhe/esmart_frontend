@@ -1,6 +1,9 @@
+import { Fragment } from "react/jsx-runtime";
+
 const Home = () => {
     return (
-        <div className="p-4 sm:ml-64">
+        <Fragment>
+            <div className="p-4 sm:ml-64">
             <div className="p-4 mt-28">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                     <div className="flex items-center justify-center h-24 rounded my-3">
@@ -89,7 +92,8 @@ const Home = () => {
             </div>
 
             
-        </div>
+            </div>
+        </Fragment>
     )
 }
 

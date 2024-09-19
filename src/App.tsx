@@ -1,11 +1,33 @@
-import "./App.css"
-import { Counter } from "./features/counter/Counter"
-import { Quotes } from "./features/quotes/Quotes"
-import logo from "./logo.svg"
+import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import 'flowbite/dist/flowbite.js';
+import Dashboard from "./features/dashboard/Dashboard";
+import ProtectedRoute from "./features/authentication/ProtectedRoute";
+import { Login } from "./features/authentication/login/Login";
+import Home from "./features/dashboard/components/Home";
+import Hotel from "./features/hotel/Hotel";
 
 const App = () => {
     return (
-        <h1 className="underline">Login</h1>
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/login" element={<Login />} />
+                    <Route
+                        path="/"
+                        element={
+                            <ProtectedRoute>
+                                <Dashboard />
+                            </ProtectedRoute>
+                        }>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/hotel" element={<Hotel />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+            <ToastContainer />
+        </>
     )
 }
 

@@ -7,6 +7,7 @@ import ProtectedRoute from "./features/authentication/ProtectedRoute";
 import { Login } from "./features/authentication/login/Login";
 import Home from "./features/dashboard/components/Home";
 import Hotel from "./features/hotel/Hotel";
+import ProductKey from "./features/productkey/ProductKey";
 
 const App = () => {
     return (
@@ -23,6 +24,7 @@ const App = () => {
                         }>
                         <Route path="/" element={<Home />} />
                         <Route path="/hotel" element={<Hotel />} />
+                        <Route path="/keys" element={<ProductKey />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

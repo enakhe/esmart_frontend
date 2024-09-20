@@ -3,8 +3,10 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { authApiSlice } from "../features/authentication/login/authApiSlice";
 import { hotelApiSlice } from "../features/hotel/hotelApiSlice";
+import { productKeyApiSlice } from "../features/productkey/productKeyApiSlice";
 
-const rootReducer = combineSlices(authApiSlice, hotelApiSlice);
+
+const rootReducer = combineSlices(authApiSlice, hotelApiSlice, productKeyApiSlice);
 
 export type RootState = ReturnType<typeof rootReducer>;
 
@@ -12,7 +14,7 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
     const store = configureStore({
         reducer: rootReducer,
         middleware: getDefaultMiddleware => {
-            return getDefaultMiddleware().concat(authApiSlice.middleware, hotelApiSlice.middleware);
+            return getDefaultMiddleware().concat(authApiSlice.middleware, hotelApiSlice.middleware, productKeyApiSlice.middleware);
         },
         preloadedState,
     });

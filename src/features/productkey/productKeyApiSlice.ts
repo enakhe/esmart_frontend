@@ -39,8 +39,8 @@ export const productKeyApiSlice = createApi({
         method: "GET",
       }),
     }),
-    getProductKeyById: builder.query<ProductKey, number>({
-      query: id => `/${id}`,
+    getProductKeyById: builder.query<ProductKey, string>({
+      query: id => `/get/${id}`,
     }),
     createProductKey: builder.mutation<ProductKey, Partial<ProductKey>>({
       query: newKey => ({

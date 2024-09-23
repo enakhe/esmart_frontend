@@ -30,6 +30,16 @@ export const productKeyApiSlice = createApi({
       }
       return headers
     },
+    fetchFn: async (url, options, extraOptions) => {
+      const response = await fetch(url, options)
+
+      if (response.status === 401 || response.status === 500) {
+        localStorage.removeItem("auth_token")
+        window.location.href = "/login"
+      }
+
+      return response
+    },
   }),
   tagTypes: ["ProductKey"],
   endpoints: builder => ({

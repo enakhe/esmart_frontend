@@ -12,7 +12,7 @@ interface HotelApiResponse {
   hotels: Hotel[]
 }
 
-const getToken = () => Cookies.get("JWT")
+const getToken = () => localStorage.getItem("auth_token")
 
 export const hotelApiSlice = createApi({
   reducerPath: "hotelApi",

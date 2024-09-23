@@ -16,7 +16,7 @@ interface ProductKeyApiResponse {
   DateCreated: string
 }
 
-const getToken = () => Cookies.get("JWT")
+const getToken = () => localStorage.getItem("auth_token")
 
 export const productKeyApiSlice = createApi({
   reducerPath: "productKeyApiSlice",

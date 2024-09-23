@@ -30,6 +30,7 @@ export const authApiSlice = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled
+          localStorage.setItem("auth_token", data.token)
         } catch (error) {
           console.error("Failed to login:", error)
         }

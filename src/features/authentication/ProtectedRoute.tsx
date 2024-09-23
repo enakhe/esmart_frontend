@@ -1,23 +1,23 @@
-import { ReactNode, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Cookies from 'js-cookie';
+import { ReactNode, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import Cookies from "js-cookie"
 
 interface ProtectedRouteProps {
-    children: ReactNode;
+  children: ReactNode
 }
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate()
 
-    useEffect(() => {
-        const token = Cookies.get("JWT");
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token")
 
-        if (!token) {
-            navigate("/login");
-        }
-    }, [navigate]);
+    if (!token) {
+      navigate("/login")
+    }
+  }, [navigate])
 
-    return <>{children}</>;
-};
+  return <>{children}</>
+}
 
-export default ProtectedRoute;
+export default ProtectedRoute

@@ -16,7 +16,7 @@ interface LoginResponse {
 
 export const authApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://api.eitiltech.com/",
+    baseUrl: "https://api.eitiltech.com/",
     credentials: "include",
   }),
   reducerPath: "authApi",

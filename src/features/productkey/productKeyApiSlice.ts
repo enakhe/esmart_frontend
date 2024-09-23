@@ -21,7 +21,7 @@ const getToken = () => Cookies.get("JWT")
 export const productKeyApiSlice = createApi({
   reducerPath: "productKeyApiSlice",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://api.eitiltech.com/ProductKeys",
+    baseUrl: "https://api.eitiltech.com/ProductKeys",
     credentials: "include",
     prepareHeaders: headers => {
       const token = getToken()

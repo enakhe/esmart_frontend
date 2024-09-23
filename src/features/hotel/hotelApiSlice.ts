@@ -17,7 +17,7 @@ const getToken = () => Cookies.get("JWT")
 export const hotelApiSlice = createApi({
   reducerPath: "hotelApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://localhost:7160/Hotels",
+    baseUrl: "http://api.eitiltech.com/Hotels",
     credentials: "include",
     prepareHeaders: headers => {
       const token = getToken()

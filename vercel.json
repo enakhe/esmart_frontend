@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/" },
+    { "source": "/login", "destination": "/" },
+    { "source": "/keys", "destination": "/" },
+    { "source": "/hotel", "destination": "/" },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}

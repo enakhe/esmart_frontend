@@ -1,4 +1,6 @@
 @import "flowbite";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,8 +13,8 @@
     width: 50px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: radial-gradient(farthest-side,#072FAD 94%,#0000) top/8px 8px no-repeat, conic-gradient(#0000 30%,#072FAD);
-    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    background: radial-gradient(farthest-side, #072FAD 94%, #0000) top/8px 8px no-repeat, conic-gradient(#0000 30%, #072FAD);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
     animation: l13 1s infinite linear;
 }
 
@@ -20,4 +22,8 @@
     100% {
         transform: rotate(1turn)
     }
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
 }

@@ -17,7 +17,7 @@ const getToken = () => localStorage.getItem("auth_token")
 export const hotelApiSlice = createApi({
   reducerPath: "hotelApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.esmartadmin.com/Hotels/api/v1",
+    baseUrl: "https://api.esmartadmin.com/api/v1/Hotels",
     credentials: "include",
     prepareHeaders: headers => {
       const token = getToken()

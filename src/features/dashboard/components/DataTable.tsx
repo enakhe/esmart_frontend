@@ -15,7 +15,7 @@ const DataTable = (data: { data: any[] }) => {
     }
   }
 
-  if (data.data !== null) {
+  if (data.data === undefined) {
     navigate("")
   }
 
@@ -84,7 +84,7 @@ const DataTable = (data: { data: any[] }) => {
           </tr>
         </thead>
         <tbody>
-          {data.data !== null
+          {data.data !== undefined
             ? data.data.map((item, index) => (
                 <tr
                   key={index}

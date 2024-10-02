@@ -14,8 +14,6 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
     if (!token) {
       navigate("/")
-    } else {
-      navigate("/dashboard")
     }
   }, [navigate])
 

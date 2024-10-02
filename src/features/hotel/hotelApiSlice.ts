@@ -1,11 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import Cookies from "js-cookie"
 
 interface Hotel {
-  Name: string
-  Email: string
-  Location: string
-  DateCreated: string
+  name: string
+  email: string
+  location: string
+  dateCreated: string
 }
 
 interface HotelApiResponse {

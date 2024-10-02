@@ -55,10 +55,10 @@ export const hotelApiSlice = createApi({
         invalidatesTags: (result, error, { id }) => [{ type: "Hotel", id }],
       },
     ),
-    deleteHotel: builder.mutation<{ success: boolean; id: number }, number>({
-      query: id => ({
-        url: `/${id}`,
-        method: "DELETE",
+    deleteHotel: builder.mutation<{ success: boolean; id: string }, string>({
+      query: (id: string) => ({
+        url: `/delete/${id}`,
+        method: "POST",
       }),
       invalidatesTags: (result, error, id) => [{ type: "Hotel", id }],
     }),

@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import Cookies from "js-cookie"
 
 interface ProductKey {
   HotelId: string
@@ -76,7 +75,7 @@ export const productKeyApiSlice = createApi({
     >({
       query: id => ({
         url: `/${id}`,
-        method: "DELETE",
+        method: "POST",
       }),
     }),
   }),

@@ -1,5 +1,5 @@
 import { Button, Modal } from "flowbite-react"
-import { Fragment, useState } from "react"
+import { Fragment, SetStateAction, useState } from "react"
 import { useGetProductKeyByIdQuery } from "../../productkey/productKeyApiSlice"
 import { toast } from "react-toastify"
 
@@ -9,7 +9,7 @@ const DataTable2 = data => {
   const [copySuccess, setCopySuccess] = useState("")
   const { data: productKey } = useGetProductKeyByIdQuery(id)
 
-  const loadProductKey = async id => {
+  const loadProductKey = async (id: SetStateAction<string>) => {
     try {
       setId(id)
       setOpenModal(true)

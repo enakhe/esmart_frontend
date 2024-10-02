@@ -69,7 +69,7 @@ export const Login = () => {
           className="mx-auto h-20 w-auto"
         />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to dashboard 
+          Sign in to dashboard
         </h2>
       </div>
 

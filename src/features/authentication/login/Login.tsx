@@ -43,6 +43,14 @@ export const Login = () => {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem("auth_token")
+
+    if (!token) {
+      navigate("/")
+    } else {
+      navigate("/dashboard")
+    }
+
     if (isSuccess && data) {
       toast.success(data.message)
       navigate("/dashboard")
@@ -61,7 +69,7 @@ export const Login = () => {
   }, [isSuccess, isError, data, error, navigate])
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-1 h-screen flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
           alt="Esmart Hotel Management Software"
@@ -74,11 +82,7 @@ export const Login = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form
-          method="POST"
-          className="space-y-6"
-          onSubmit={handleSubmit}
-        >
+        <form method="POST" className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="username"

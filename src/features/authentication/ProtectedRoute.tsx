@@ -1,6 +1,6 @@
-import { ReactNode, useEffect } from "react"
+import type { ReactNode } from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import Cookies from "js-cookie"
 
 interface ProtectedRouteProps {
   children: ReactNode
@@ -13,7 +13,9 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     const token = localStorage.getItem("auth_token")
 
     if (!token) {
-      navigate("/login")
+      navigate("/")
+    } else {
+      navigate("/dashboard")
     }
   }, [navigate])
 

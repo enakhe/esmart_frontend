@@ -1,43 +1,64 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import logo from "../../../imgs/logo.png"
 import { useLoginMutation } from "./authApiSlice"
 import { toast } from "react-toastify"
 import "./Login.module.css"
 import { useNavigate } from "react-router-dom"
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 
 export const Login = () => {
   const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
-  const [errors, setErrors] = useState({})
-  const [login, { isError, isLoading, isSuccess }] = useLoginMutation()
+  const [errors, setErrors] = useState({ userName: false, password: false })
+  const [login, { data, isError, error, isLoading, isSuccess }] =
+    useLoginMutation()
 
   const navigate = useNavigate()
 
   const validate = () => {
-    let temp = {}
+    const temp = {
+      userName: true,
+      password: true,
+    }
     temp.userName = username !== "" ? false : true
     temp.password = password !== "" ? false : true
     setErrors(temp)
-    return Object.values(temp).every(x => x === "")
+    return Object.values(temp).every(x => x === false)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    validate()
+    if (!validate()) {
+      toast.warning("Enter all fields")
+      return
+    }
     try {
-      await login({ username, password }).unwrap()
+      await login({
+        username,
+        password,
+      }).unwrap()
     } catch (err) {
-      if (isError) {
-        toast.error(
-          `Failed to log in: ${err?.data?.detail ? err?.data?.error : "An error occurred"}`,
-        )
-      }
+      console.error(err)
     }
   }
 
-  if (isSuccess) {
-    navigate("/")
-  }
+  useEffect(() => {
+    if (isSuccess && data) {
+      toast.success(data.message)
+      navigate("/")
+    }
+
+    if (isError && error) {
+      const err = error as FetchBaseQueryError
+      if (err?.data && typeof err.data === "object" && "message" in err.data) {
+        toast.error(
+          `${(err.data as { message: string }).message || "Login failed"}`,
+        )
+      } else {
+        toast.error("An unknown error occurred")
+      }
+    }
+  }, [isSuccess, isError, data, error, navigate])
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

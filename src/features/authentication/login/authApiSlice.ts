@@ -3,10 +3,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 interface LoginRequest {
   username: string
   password: string
-  rememberMe: boolean
 }
 
 interface LoginResponse {
+  message: string
   token: string
   Id: string
   FullName: string

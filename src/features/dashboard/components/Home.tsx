@@ -13,7 +13,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
             <div className="flex items-center justify-center h-24 rounded my-12">
               <a
-                href="/hotel"
+                href="/dashboard/hotel"
                 className="block max-lg w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 my-3"
               >
                 <p className="text-2xl mb-8 text-gray-700 dark:text-gray-400">
@@ -35,7 +35,7 @@ const Home = () => {
             </div>
             <div className="flex items-center justify-center h-24 rounded my-12">
               <a
-                href="/keys"
+                href="/dashboard/keys"
                 className="block max-lg w-96 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
                 <p className="text-2xl mb-8 text-gray-700 dark:text-gray-400">

@@ -45,7 +45,7 @@ export const Login = () => {
   useEffect(() => {
     if (isSuccess && data) {
       toast.success(data.message)
-      navigate("/")
+      navigate("/dashboard")
     }
 
     if (isError && error) {

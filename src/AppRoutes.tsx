@@ -2,7 +2,7 @@ import { Login } from "./features/authentication/login/Login";
 
 const AppRoutes = [
     {
-        path: '/login',
+        path: '/',
         element: <Login />,
         name: 'Login',
     },

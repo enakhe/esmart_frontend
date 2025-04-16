@@ -16,7 +16,7 @@ interface LoginResponse {
 
 export const authApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.esmartadmin.com/api/v1",
+    baseUrl: "https://samprogramming-001-site1.atempurl.com/api/v1",
     credentials: "include",
   }),
   reducerPath: "authApi",
